@@ -1,0 +1,14 @@
+config:
+  enable: true
+  kick-message:
+    - '&8[&cNoxus Team&8]'
+    - '&r'
+    - '&c¡Server in maintenance!'
+    - '&r'
+    - '&aPlease, go to discord'
+    - '&r'
+    - '&eMore info in: &cYourDiscord'
+  bypass-maintenance:
+    - Jonakls
+    - zlPatrik_
+    - md_5

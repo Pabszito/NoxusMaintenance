@@ -1,0 +1,9 @@
+name: NoxusMaintenance
+version: ${project.version}
+main: org.noxus.noxusmaintenance.NoxusMaintenance
+api-version: 1.16
+authors: [ Jonakls ]
+description: Basic maintenance plugin of server
+commands:
+  noxusmaintenance:
+    aliases: ["nxsm", "maintenance"]
