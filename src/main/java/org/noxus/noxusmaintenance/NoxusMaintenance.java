@@ -10,7 +10,15 @@ public final class NoxusMaintenance extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        getLogger().info("");
+        getLogger().info("|\\ |\\/|\\/|  | NoxusMaintenance v"+getDescription().getVersion());
+        getLogger().info("| \\|/\\|  |  | By: "+getDescription().getAuthors());
+        getLogger().info("");
+        getLogger().info("Loading, please wait...");
+
         this.registerAll();
+        getLogger().info("Loading succes");
 
     }
 
