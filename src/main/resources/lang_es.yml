@@ -1,0 +1,28 @@
+#
+#    ██╗      █████╗ ███╗   ██╗ ██████╗
+#    ██║     ██╔══██╗████╗  ██║██╔════╝
+#    ██║     ███████║██╔██╗ ██║██║  ███╗
+#    ██║     ██╔══██║██║╚██╗██║██║   ██║
+#    ███████╗██║  ██║██║ ╚████║╚██████╔╝
+#    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝
+#
+lang:
+  help:
+    - '&6NoxusMaintenance'
+    - '&r'
+    - '&a/nxsm help &c- &eMuestra este mensaje'
+    - '&a/nxsm reload &c- &Recarga la configuración'
+    - '&a/nxsm [on/off] &c- &eActiva o desactiva el modo de mantenimienti'
+    - '&a/nxsm add [player] &c- &eAgrega a un jugador a la whitelist'
+    - '&a/nxsm remove [player] &c- &eElimina a un jugador de la whitelist'
+  reload: '&eLa configuración fue recargada correctamente.'
+  player-added: '&aEl jugador %player% fue añadido a la lista de bypass del mantenimiento'
+  player-remove: '&cEl jugador %player% fue eliminado de la lista de bypass del mantenimiento'
+  maintenance-enabled: '&aMantenimiento activado'
+  maintenance-disable: '&aMantenimiento desactivado'
+error:
+  no-player: '&cEse jugador no existe'
+  no-pemsissions: 'No tienes permisos'
+  already-enable: '&cEl mantenimiento ya está activado'
+  already-disable: '&cEl mantenimiento ya está desactivado'
+  already-player: '&cEste jugador ya está agregado'
