@@ -19,17 +19,18 @@ public class PreLoginListener implements Listener {
                 if (bypass.equalsIgnoreCase(event.getName())){
 
                     event.allow();
-                    return;
+
+                } else {
+
+                    for (String line : FileManager.getConfig().getStringList("config.kick-message")){
+
+                        stringBuilder.append(line).append("\n");
+
+                    }
+
+                    event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, stringBuilder.toString());
                 }
-
-                for (String line : FileManager.getConfig().getStringList("config.kick-message")){
-
-                    stringBuilder.append(line).append("\n");
-
-                }
-                event.setKickMessage(stringBuilder.toString());
-
-                event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, event.getKickMessage());
+                return;
 
             }
 
