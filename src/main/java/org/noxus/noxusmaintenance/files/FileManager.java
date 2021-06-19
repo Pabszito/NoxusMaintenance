@@ -7,9 +7,8 @@ public class FileManager {
 
     private final NoxusMaintenance plugin;
 
-    private static YamlCreator lang;
-    private static YamlCreator config;
-    private static YamlCreator data;
+    private YamlCreator lang;
+    private YamlCreator config;
 
     public FileManager(NoxusMaintenance plugin){
         this.plugin = plugin;
@@ -25,11 +24,11 @@ public class FileManager {
         return new YamlCreator(plugin, string);
     }
 
-    public static YamlCreator getLang(){
+    public YamlCreator getLang(){
         return lang;
     }
 
-    public static YamlCreator getConfig(){
+    public YamlCreator getConfig(){
         return config;
     }
 }

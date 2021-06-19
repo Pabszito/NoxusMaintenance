@@ -7,14 +7,20 @@ import org.noxus.noxusmaintenance.files.FileManager;
 
 public class PreLoginListener implements Listener {
 
+    private final FileManager fileManager;
+
+    public PreLoginListener(FileManager fileManager){
+        this.fileManager = fileManager;
+    }
+
     @EventHandler
     public void preLoginPlayer(AsyncPlayerPreLoginEvent event){
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        if (FileManager.getConfig().getBoolean("config.enable")){
+        if (fileManager.getConfig().getBoolean("config.enable")){
 
-            for (String bypass : FileManager.getConfig().getStringList("config.bypass-maintenance")){
+            for (String bypass : fileManager.getConfig().getStringList("config.bypass-maintenance")){
 
                 if (event.getName().equalsIgnoreCase(bypass)){
 
@@ -22,7 +28,7 @@ public class PreLoginListener implements Listener {
 
                 } else {
 
-                    for (String line : FileManager.getConfig().getStringList("config.kick-message")){
+                    for (String line : fileManager.getConfig().getStringList("config.kick-message")){
 
                         stringBuilder.append(line).append("\n");
 

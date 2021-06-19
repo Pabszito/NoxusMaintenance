@@ -1,22 +1,39 @@
 package org.noxus.noxusmaintenance.commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.noxus.noxusmaintenance.files.FileManager;
-import org.noxus.noxusmaintenance.utils.ReplacerUtils;
+import org.noxus.noxusmaintenance.utils.TextColor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainCommand implements CommandExecutor {
 
+    private FileManager fileManager;
+
+    public MainCommand(FileManager fileManager){
+        this.fileManager = fileManager;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
+        if (!(sender.hasPermission("noxusmaintenance.commands"))){
+
+            sender.sendMessage(TextColor.color(fileManager.getLang().getString("error.no-permission")));
+            return true;
+        }
+
+
         if (!(args.length > 0)){
 
-            ReplacerUtils.helpMessages(sender);
+            for(String line: fileManager.getLang().getStringList("lang.help")){
+
+                sender.sendMessage(TextColor.color(line));
+
+            }
             return true;
 
         }
@@ -25,65 +42,69 @@ public class MainCommand implements CommandExecutor {
 
             case "reload":
 
-                FileManager.getLang().reload();
-                FileManager.getConfig().reload();
-                ReplacerUtils.reload(sender);
+                fileManager.getLang().reload();
+                fileManager.getConfig().reload();
+                sender.sendMessage(TextColor.color(fileManager.getLang().getString("lang.reload")));
                 break;
 
             case "on":
 
-                if (!FileManager.getConfig().getBoolean("config.enable")){
+                if (!fileManager.getConfig().getBoolean("config.enable")){
 
-                    FileManager.getConfig().set("config.enable", true);
-                    FileManager.getConfig().save();
-                    sender.sendMessage(ReplacerUtils.color(
-                            FileManager.getLang().getString("lang.maintenance-enabled")));
+                    fileManager.getConfig().set("config.enable", true);
+                    fileManager.getConfig().save();
+                    sender.sendMessage(TextColor.color(
+                            fileManager.getLang().getString("lang.maintenance-enabled")));
                     return true;
                 }
 
-                sender.sendMessage(ReplacerUtils.color(
-                        FileManager.getLang().getString("error.already-enable")));
+                sender.sendMessage(TextColor.color(
+                        fileManager.getLang().getString("error.already-enable")));
                 break;
 
             case "off":
 
-                if (FileManager.getConfig().getBoolean("config.enable")){
+                if (fileManager.getConfig().getBoolean("config.enable")){
 
-                    FileManager.getConfig().set("config.enable", false);
-                    FileManager.getConfig().save();
-                    sender.sendMessage(ReplacerUtils.color(
-                            FileManager.getLang().getString("lang.maintenance-disable")));
+                    fileManager.getConfig().set("config.enable", false);
+                    fileManager.getConfig().save();
+                    sender.sendMessage(TextColor.color(
+                            fileManager.getLang().getString("lang.maintenance-disable")));
                     return true;
                 }
 
-                sender.sendMessage(ReplacerUtils.color(
-                        FileManager.getLang().getString("error.already-disable")));
+                sender.sendMessage(TextColor.color(
+                        fileManager.getLang().getString("error.already-disable")));
                 break;
 
             case "add":
 
                 if (!(args.length > 1)){
 
-                    ReplacerUtils.helpMessages(sender);
+                    for(String line: fileManager.getLang().getStringList("lang.help")){
+
+                        sender.sendMessage(TextColor.color(line));
+
+                    }
                     return true;
 
                 }
 
-                if (FileManager.getConfig().getStringList("config.bypass-maintenance").contains(args[1])){
+                if (fileManager.getConfig().getStringList("config.bypass-maintenance").contains(args[1])){
 
-                    sender.sendMessage(FileManager.getLang().getString("error.already-player"));
+                    sender.sendMessage(fileManager.getLang().getString("error.already-player"));
 
                     return true;
 
                 }
 
-                List<String> list = FileManager.getConfig().getStringList("config.bypass-maintenance");
+                List<String> list = fileManager.getConfig().getStringList("config.bypass-maintenance");
                 list.add(args[1]);
-                FileManager.getConfig().set("config.bypass-maintenance", list);
+                fileManager.getConfig().set("config.bypass-maintenance", list);
 
-                FileManager.getConfig().save();
+                fileManager.getConfig().save();
 
-                sender.sendMessage(FileManager.getLang().getString("lang.player-added").
+                sender.sendMessage(fileManager.getLang().getString("lang.player-added").
                                 replace("%player%", args[1])
                 );
 
@@ -93,34 +114,42 @@ public class MainCommand implements CommandExecutor {
 
                 if (!(args.length > 1)){
 
-                    ReplacerUtils.helpMessages(sender);
+                    for(String line: fileManager.getLang().getStringList("lang.help")){
+
+                        sender.sendMessage(TextColor.color(line));
+
+                    }
                     return true;
 
                 }
 
-                if (!FileManager.getConfig().getStringList("config.bypass-maintenance").contains(args[1])){
+                if (!fileManager.getConfig().getStringList("config.bypass-maintenance").contains(args[1])){
 
-                    sender.sendMessage(ReplacerUtils.color(
-                            FileManager.getLang().getString("error.no-player")
+                    sender.sendMessage(TextColor.color(
+                            fileManager.getLang().getString("error.no-player")
                     ));
 
                     return true;
 
                 }
 
-                List<String> list2 = FileManager.getConfig().getStringList("config.bypass-maintenance");
+                List<String> list2 = fileManager.getConfig().getStringList("config.bypass-maintenance");
                 list2.remove(args[1]);
-                FileManager.getConfig().set("config.bypass-maintenance", list2);
-                FileManager.getConfig().save();
+                fileManager.getConfig().set("config.bypass-maintenance", list2);
+                fileManager.getConfig().save();
 
-                sender.sendMessage(ReplacerUtils.color(
-                        FileManager.getLang().getString("lang.player-remove").
+                sender.sendMessage(TextColor.color(
+                        fileManager.getLang().getString("lang.player-remove").
                                 replace("%player%", args[1])
                 ));
 
                 break;
             default:
-                ReplacerUtils.helpMessages(sender);
+                for(String line: fileManager.getLang().getStringList("lang.help")){
+
+                    sender.sendMessage(TextColor.color(line));
+
+                }
                 break;
         }
         return true;
