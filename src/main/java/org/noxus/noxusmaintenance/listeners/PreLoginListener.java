@@ -20,13 +20,9 @@ public class PreLoginListener implements Listener {
 
         if (fileManager.getConfig().getBoolean("config.enable")){
 
-            for (String bypass : fileManager.getConfig().getStringList("config.bypass-maintenance")){
+            for (String player : fileManager.getConfig().getStringList("config.player-maintenance")){
 
-                if (event.getName().equalsIgnoreCase(bypass)){
-
-                    event.allow();
-
-                } else {
+                if (!(event.getName().equalsIgnoreCase(player))){
 
                     for (String line : fileManager.getConfig().getStringList("config.kick-message")){
 
@@ -35,7 +31,13 @@ public class PreLoginListener implements Listener {
                     }
 
                     event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, stringBuilder.toString());
+
+                    return;
+
                 }
+
+                event.allow();
+
             }
 
         }

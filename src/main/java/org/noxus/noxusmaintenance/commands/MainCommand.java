@@ -1,10 +1,13 @@
 package org.noxus.noxusmaintenance.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.noxus.noxusmaintenance.files.FileManager;
+import org.noxus.noxusmaintenance.handlers.MaintenanceHandler;
 import org.noxus.noxusmaintenance.utils.TextColor;
 
 import java.util.List;
@@ -12,9 +15,11 @@ import java.util.List;
 public class MainCommand implements CommandExecutor {
 
     private FileManager fileManager;
+    private MaintenanceHandler handler;
 
-    public MainCommand(FileManager fileManager){
+    public MainCommand(FileManager fileManager, MaintenanceHandler handler){
         this.fileManager = fileManager;
+        this.handler = handler;
     }
 
     @Override
@@ -90,24 +95,17 @@ public class MainCommand implements CommandExecutor {
 
                 }
 
-                if (fileManager.getConfig().getStringList("config.bypass-maintenance").contains(args[1])){
+                if (handler.add(args[1])){
 
-                    sender.sendMessage(fileManager.getLang().getString("error.already-player"));
+                    sender.sendMessage(fileManager.getLang().getString("lang.player-added").
+                            replace("%player%", args[1])
+                    );
 
                     return true;
 
                 }
 
-                List<String> list = fileManager.getConfig().getStringList("config.bypass-maintenance");
-                list.add(args[1]);
-                fileManager.getConfig().set("config.bypass-maintenance", list);
-
-                fileManager.getConfig().save();
-
-                sender.sendMessage(fileManager.getLang().getString("lang.player-added").
-                                replace("%player%", args[1])
-                );
-
+                sender.sendMessage(fileManager.getLang().getString("error.already-player"));
                 break;
 
             case "remove":
@@ -123,27 +121,23 @@ public class MainCommand implements CommandExecutor {
 
                 }
 
-                if (!fileManager.getConfig().getStringList("config.bypass-maintenance").contains(args[1])){
+                if (handler.remove(args[1])){
 
                     sender.sendMessage(TextColor.color(
-                            fileManager.getLang().getString("error.no-player")
+                            fileManager.getLang().getString("lang.player-remove").
+                                    replace("%player%", args[1])
                     ));
 
                     return true;
 
                 }
 
-                List<String> list2 = fileManager.getConfig().getStringList("config.bypass-maintenance");
-                list2.remove(args[1]);
-                fileManager.getConfig().set("config.bypass-maintenance", list2);
-                fileManager.getConfig().save();
-
                 sender.sendMessage(TextColor.color(
-                        fileManager.getLang().getString("lang.player-remove").
-                                replace("%player%", args[1])
+                        fileManager.getLang().getString("error.no-player")
                 ));
 
                 break;
+
             default:
                 for(String line: fileManager.getLang().getStringList("lang.help")){
 
