@@ -6,4 +6,4 @@ authors: [ Jonakls ]
 description: Basic maintenance plugin of server
 commands:
   noxusmaintenance:
-    aliases: ["nxsm", "maintenance"]
+    aliases: ["nxm", "maintenance", "nm"]
