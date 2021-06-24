@@ -12,35 +12,42 @@ public class MaintenanceHandler {
         this.fileManager = fileManager;
     }
 
-    public boolean add(String arg){
+    public boolean addPlayer(String arg){
 
-        if (fileManager.getConfig().getStringList("config.player-maintenance").contains(arg)){
+        List<String> addList = fileManager.getConfig().getStringList("config.whitelist-player");
+
+        if (addList.contains(arg)){
             return false;
         }
 
-        List<String> addList = fileManager.getConfig().getStringList("config.player-maintenance");
-
         addList.add(arg);
 
-        fileManager.getConfig().set("config.player-maintenance", addList);
+        fileManager.getConfig().set("config.whitelist-player", addList);
         fileManager.getConfig().save();
         return true;
     }
 
-    public boolean remove(String arg){
+    public boolean removePlayer(String arg){
 
-        if (fileManager.getConfig().getStringList("config.player-maintenance").contains(arg)){
+        List<String> removeList = fileManager.getConfig().getStringList("config.whitelist-player");
+
+        if (!(removeList.contains(arg))){
             return false;
         }
 
-        List<String> removeList = fileManager.getConfig().getStringList("config.player-maintenance");
-
         removeList.remove(arg);
 
-        fileManager.getConfig().set("config.player-maintenance", removeList);
+        fileManager.getConfig().set("config.whitelist-player", removeList);
         fileManager.getConfig().save();
         return true;
 
+    }
+
+    public boolean isWhitelist(String string){
+
+        List<String> list = fileManager.getConfig().getStringList("config.whitelist-player");
+
+        return list.contains(string);
     }
 
 

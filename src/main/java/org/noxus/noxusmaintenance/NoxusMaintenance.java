@@ -33,12 +33,12 @@ public final class NoxusMaintenance extends JavaPlugin {
 
     private void registerAll(){
 
+        files.setupFiles();
+
         getCommand("noxusmaintenance").setExecutor(new MainCommand(files, handler));
         getCommand("noxusmaintenance").setTabCompleter(new TabCompleteCommand());
 
-        getServer().getPluginManager().registerEvents(new PreLoginListener(files), this);
-
-        files.setupFiles();
+        getServer().getPluginManager().registerEvents(new PreLoginListener(files, handler), this);
 
     }
 }
