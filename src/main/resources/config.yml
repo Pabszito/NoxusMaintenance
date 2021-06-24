@@ -20,7 +20,7 @@ config:
     - '&r'
     - '&eMore info in: &cYourDiscord'
   # Player that bypass maintenance mode
-  player-maintenance:
+  whitelist-player:
     - Jonakls
     - zlPatrik_
     - md_5

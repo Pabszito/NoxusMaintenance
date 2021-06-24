@@ -15,6 +15,7 @@ lang:
     - '&a/nxsm [on/off] &c- &eEnable or disable maintenance mode'
     - '&a/nxsm add [player] &c- &eAdd player to whitelist'
     - '&a/nxsm remove [player] &c- &eRemove player to whitelist'
+    - '&a/nxsm list &c- &eShow all players of whitelist'
   reload: '&eConfig has been reloaded.'
   player-added: '&aPlayer %player% has been added to list of maintenance bypass'
   player-remove: '&cPlayer %player% has been removed to list of maintenance bypass'
