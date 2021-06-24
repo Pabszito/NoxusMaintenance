@@ -22,6 +22,7 @@ public class TabCompleteCommand implements TabCompleter {
             list.add("off");
             list.add("add");
             list.add("remove");
+            list.add("list");
             return list;
         }
         return null;

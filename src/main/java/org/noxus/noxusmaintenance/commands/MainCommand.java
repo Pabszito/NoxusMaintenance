@@ -1,11 +1,8 @@
 package org.noxus.noxusmaintenance.commands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.noxus.noxusmaintenance.files.FileManager;
 import org.noxus.noxusmaintenance.handlers.MaintenanceHandler;
 import org.noxus.noxusmaintenance.utils.TextColor;
@@ -95,7 +92,7 @@ public class MainCommand implements CommandExecutor {
 
                 }
 
-                if (handler.add(args[1])){
+                if (handler.addPlayer(args[1])){
 
                     sender.sendMessage(fileManager.getLang().getString("lang.player-added").
                             replace("%player%", args[1])
@@ -121,7 +118,7 @@ public class MainCommand implements CommandExecutor {
 
                 }
 
-                if (handler.remove(args[1])){
+                if (handler.removePlayer(args[1])){
 
                     sender.sendMessage(TextColor.color(
                             fileManager.getLang().getString("lang.player-remove").
@@ -138,6 +135,19 @@ public class MainCommand implements CommandExecutor {
 
                 break;
 
+            case "list":
+
+                StringBuilder listPlayers = new StringBuilder();
+                List<String> whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
+                for (int i = 0; i < whitelist.size(); i++){
+
+                    listPlayers.append(whitelist.get(i)).append(' ');
+
+                }
+
+                sender.sendMessage(TextColor.color("&aWhitelist players: &e" + listPlayers.toString()));
+
+                break;
             default:
                 for(String line: fileManager.getLang().getStringList("lang.help")){
 
