@@ -30,7 +30,7 @@ public class YamlCreator extends YamlConfiguration {
         this(plugin, fileName, fileExtension, plugin.getDataFolder());
     }
 
-    public void createFile(){
+    public void createFile() {
         try {
             if (!file.exists()) {
                 if (this.plugin.getResource(this.fileName) != null) {

@@ -10,25 +10,25 @@ public class FileManager {
     private YamlCreator lang;
     private YamlCreator config;
 
-    public FileManager(NoxusMaintenance plugin){
+    public FileManager(NoxusMaintenance plugin) {
         this.plugin = plugin;
     }
 
-    public void setupFiles(){
+    public void setupFiles() {
         lang = this.fileCreator("lang");
         config = this.fileCreator("config");
 
     }
 
-    public YamlCreator fileCreator(String string){
+    public YamlCreator fileCreator(String string) {
         return new YamlCreator(plugin, string);
     }
 
-    public YamlCreator getLang(){
+    public YamlCreator getLang() {
         return lang;
     }
 
-    public YamlCreator getConfig(){
+    public YamlCreator getConfig() {
         return config;
     }
 }

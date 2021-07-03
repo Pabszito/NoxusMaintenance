@@ -12,11 +12,9 @@ public class TabCompleteCommand implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-
         List<String> list = new ArrayList<>();
 
         if (args.length == 1) {
-
             list.add("reload");
             list.add("on");
             list.add("off");
@@ -25,6 +23,7 @@ public class TabCompleteCommand implements TabCompleter {
             list.add("list");
             return list;
         }
+
         return null;
     }
 }
