@@ -8,18 +8,21 @@
 #
 config:
   # Enable or disable maintenance mode.
-  # You can change this option while /nxsm on/off command
+  # You can change this option using the /nxsm [on/off] command in-game.
   enable: false
-  # Print message to kick player.
+  # Message sent to the player when attempting to connect while on
+  # maintenance mode.
   kick-message:
     - '&8[&cNoxus Team&8]'
     - '&r'
-    - '&c¡Server in maintenance!'
+    - '&c¡Server is currently under maintenance!'
     - '&r'
-    - '&aPlease, go to discord'
+    - '&aYou can check our Discord server for'
+    - '&amaintenance updates.'
     - '&r'
-    - '&eMore info in: &cYourDiscord'
-  # Player that bypass maintenance mode
+    - '&eMore info in: &chttps://discord.gg/invite'
+  # Whitelisted players
+  # (Players that can join the server under maintenance mode)
   whitelist-player:
     - Jonakls
     - zlPatrik_
