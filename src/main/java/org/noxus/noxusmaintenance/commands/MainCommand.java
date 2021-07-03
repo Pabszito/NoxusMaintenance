@@ -14,7 +14,7 @@ public class MainCommand implements CommandExecutor {
     private FileManager fileManager;
     private MaintenanceHandler handler;
 
-    public MainCommand(FileManager fileManager, MaintenanceHandler handler){
+    public MainCommand(FileManager fileManager, MaintenanceHandler handler) {
         this.fileManager = fileManager;
         this.handler = handler;
     }
@@ -22,16 +22,16 @@ public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (!(sender.hasPermission("noxusmaintenance.commands"))){
+        if (!(sender.hasPermission("noxusmaintenance.commands"))) {
 
             sender.sendMessage(TextColor.color(fileManager.getLang().getString("error.no-permission")));
             return true;
         }
 
 
-        if (!(args.length > 0)){
+        if (!(args.length > 0)) {
 
-            for(String line: fileManager.getLang().getStringList("lang.help")){
+            for (String line : fileManager.getLang().getStringList("lang.help")) {
 
                 sender.sendMessage(TextColor.color(line));
 
@@ -40,7 +40,7 @@ public class MainCommand implements CommandExecutor {
 
         }
 
-        switch (args[0].toLowerCase()){
+        switch (args[0].toLowerCase()) {
 
             case "reload":
 
@@ -51,7 +51,7 @@ public class MainCommand implements CommandExecutor {
 
             case "on":
 
-                if (!fileManager.getConfig().getBoolean("config.enable")){
+                if (!fileManager.getConfig().getBoolean("config.enable")) {
 
                     fileManager.getConfig().set("config.enable", true);
                     fileManager.getConfig().save();
@@ -66,7 +66,7 @@ public class MainCommand implements CommandExecutor {
 
             case "off":
 
-                if (fileManager.getConfig().getBoolean("config.enable")){
+                if (fileManager.getConfig().getBoolean("config.enable")) {
 
                     fileManager.getConfig().set("config.enable", false);
                     fileManager.getConfig().save();
@@ -81,9 +81,9 @@ public class MainCommand implements CommandExecutor {
 
             case "add":
 
-                if (!(args.length > 1)){
+                if (!(args.length > 1)) {
 
-                    for(String line: fileManager.getLang().getStringList("lang.help")){
+                    for (String line : fileManager.getLang().getStringList("lang.help")) {
 
                         sender.sendMessage(TextColor.color(line));
 
@@ -92,7 +92,7 @@ public class MainCommand implements CommandExecutor {
 
                 }
 
-                if (handler.addPlayer(args[1])){
+                if (handler.addPlayer(args[1])) {
 
                     sender.sendMessage(fileManager.getLang().getString("lang.player-added").
                             replace("%player%", args[1])
@@ -107,9 +107,9 @@ public class MainCommand implements CommandExecutor {
 
             case "remove":
 
-                if (!(args.length > 1)){
+                if (!(args.length > 1)) {
 
-                    for(String line: fileManager.getLang().getStringList("lang.help")){
+                    for (String line : fileManager.getLang().getStringList("lang.help")) {
 
                         sender.sendMessage(TextColor.color(line));
 
@@ -118,7 +118,7 @@ public class MainCommand implements CommandExecutor {
 
                 }
 
-                if (handler.removePlayer(args[1])){
+                if (handler.removePlayer(args[1])) {
 
                     sender.sendMessage(TextColor.color(
                             fileManager.getLang().getString("lang.player-remove").
@@ -139,7 +139,7 @@ public class MainCommand implements CommandExecutor {
 
                 StringBuilder listPlayers = new StringBuilder();
                 List<String> whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
-                for (int i = 0; i < whitelist.size(); i++){
+                for (int i = 0; i < whitelist.size(); i++) {
 
                     listPlayers.append(whitelist.get(i)).append(' ');
 
@@ -149,7 +149,7 @@ public class MainCommand implements CommandExecutor {
 
                 break;
             default:
-                for(String line: fileManager.getLang().getStringList("lang.help")){
+                for (String line : fileManager.getLang().getStringList("lang.help")) {
 
                     sender.sendMessage(TextColor.color(line));
 

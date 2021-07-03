@@ -1,6 +1,5 @@
 package org.noxus.noxusmaintenance.listeners;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -12,19 +11,19 @@ public class PreLoginListener implements Listener {
     private final FileManager fileManager;
     private final MaintenanceHandler handler;
 
-    public PreLoginListener(FileManager fileManager, MaintenanceHandler handler){
+    public PreLoginListener(FileManager fileManager, MaintenanceHandler handler) {
         this.fileManager = fileManager;
         this.handler = handler;
     }
 
     @EventHandler
-    public void preLoginPlayer(AsyncPlayerPreLoginEvent event){
+    public void preLoginPlayer(AsyncPlayerPreLoginEvent event) {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        if (fileManager.getConfig().getBoolean("config.enable")){
+        if (fileManager.getConfig().getBoolean("config.enable")) {
 
-            if (handler.isWhitelist(event.getName())){
+            if (handler.isWhitelist(event.getName())) {
 
                 event.allow();
 
@@ -32,7 +31,7 @@ public class PreLoginListener implements Listener {
 
             }
 
-            for (String line : fileManager.getConfig().getStringList("config.kick-message")){
+            for (String line : fileManager.getConfig().getStringList("config.kick-message")) {
 
                 stringBuilder.append(line).append("\n");
 

@@ -15,7 +15,7 @@ public class TabCompleteCommand implements TabCompleter {
 
         List<String> list = new ArrayList<>();
 
-        if (args.length == 1){
+        if (args.length == 1) {
 
             list.add("reload");
             list.add("on");

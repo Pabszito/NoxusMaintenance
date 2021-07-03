@@ -9,16 +9,16 @@ public class MaintenanceHandler {
     private final FileManager fileManager;
     private List<String> whitelist;
 
-    public MaintenanceHandler(FileManager fileManager){
+    public MaintenanceHandler(FileManager fileManager) {
         this.fileManager = fileManager;
     }
 
 
-    public boolean addPlayer(String arg){
+    public boolean addPlayer(String arg) {
 
         whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
 
-        if (whitelist.contains(arg)){
+        if (whitelist.contains(arg)) {
             return false;
         }
 
@@ -29,11 +29,11 @@ public class MaintenanceHandler {
         return true;
     }
 
-    public boolean removePlayer(String arg){
+    public boolean removePlayer(String arg) {
 
         whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
 
-        if (!(whitelist.contains(arg))){
+        if (!(whitelist.contains(arg))) {
             return false;
         }
 
@@ -45,7 +45,7 @@ public class MaintenanceHandler {
 
     }
 
-    public boolean isWhitelist(String string){
+    public boolean isWhitelist(String string) {
 
         whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
 

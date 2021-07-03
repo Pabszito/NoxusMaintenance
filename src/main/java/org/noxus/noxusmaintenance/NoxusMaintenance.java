@@ -13,8 +13,8 @@ public final class NoxusMaintenance extends JavaPlugin {
     public void onEnable() {
 
         getLogger().info("");
-        getLogger().info("|\\ |\\/|\\/|  | NoxusMaintenance v"+getDescription().getVersion());
-        getLogger().info("| \\|/\\|  |  | By: "+getDescription().getAuthors());
+        getLogger().info("|\\ |\\/|\\/|  | NoxusMaintenance v" + getDescription().getVersion());
+        getLogger().info("| \\|/\\|  |  | By: " + getDescription().getAuthors());
         getLogger().info("");
         getLogger().info("Loading, please wait...");
 
@@ -28,7 +28,7 @@ public final class NoxusMaintenance extends JavaPlugin {
 
     }
 
-    private void registerAll(){
+    private void registerAll() {
 
         FileManager files = new FileManager(this);
         MaintenanceHandler handler = new MaintenanceHandler(files);
