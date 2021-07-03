@@ -21,7 +21,7 @@ lang:
   maintenance-enabled: '&aMantenimiento activado'
   maintenance-disable: '&aMantenimiento desactivado'
 error:
-  no-player: '&cEse jugador no existe'
+  no-player: '&cEse jugador no esta dentro de la lista blanca.'
   no-permission: 'No tienes permisos'
   already-enable: '&cEl mantenimiento ya está activado'
   already-disable: '&cEl mantenimiento ya está desactivado'
