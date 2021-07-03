@@ -45,7 +45,7 @@ public class MaintenanceHandler {
 
     }
 
-    public boolean isWhitelist(String string) {
+    public boolean isWhitelisted(String string) {
 
         whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
 

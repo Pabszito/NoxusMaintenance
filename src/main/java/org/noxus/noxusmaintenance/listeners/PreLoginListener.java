@@ -23,25 +23,18 @@ public class PreLoginListener implements Listener {
 
         if (fileManager.getConfig().getBoolean("config.enable")) {
 
-            if (handler.isWhitelist(event.getName())) {
-
+            if (handler.isWhitelisted(event.getName())) {
                 event.allow();
-
                 return;
 
             }
 
             for (String line : fileManager.getConfig().getStringList("config.kick-message")) {
-
                 stringBuilder.append(line).append("\n");
 
             }
 
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, stringBuilder.toString());
-
         }
-
     }
-
-
 }
