@@ -11,7 +11,6 @@ public final class NoxusMaintenance extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
         getLogger().info("");
         getLogger().info("|\\ |\\/|\\/|  | NoxusMaintenance v" + getDescription().getVersion());
         getLogger().info("| \\|/\\|  |  | By: " + getDescription().getAuthors());
@@ -25,7 +24,11 @@ public final class NoxusMaintenance extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        getLogger().info("");
+        getLogger().info("|\\ |\\/|\\/|  | NoxusMaintenance v" + getDescription().getVersion());
+        getLogger().info("| \\|/\\|  |  | By: " + getDescription().getAuthors());
+        getLogger().info("");
+        getLogger().info("Plugin has been disabled.");
     }
 
     private void registerAll() {
