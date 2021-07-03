@@ -9,9 +9,6 @@ import org.noxus.noxusmaintenance.listeners.PreLoginListener;
 
 public final class NoxusMaintenance extends JavaPlugin {
 
-    private final FileManager files = new FileManager(this);
-    private final MaintenanceHandler handler = new MaintenanceHandler(files);
-
     @Override
     public void onEnable() {
 
@@ -22,7 +19,7 @@ public final class NoxusMaintenance extends JavaPlugin {
         getLogger().info("Loading, please wait...");
 
         this.registerAll();
-        getLogger().info("Loading succes");
+        getLogger().info("Loading success");
 
     }
 
@@ -32,6 +29,9 @@ public final class NoxusMaintenance extends JavaPlugin {
     }
 
     private void registerAll(){
+
+        FileManager files = new FileManager(this);
+        MaintenanceHandler handler = new MaintenanceHandler(files);
 
         files.setupFiles();
 

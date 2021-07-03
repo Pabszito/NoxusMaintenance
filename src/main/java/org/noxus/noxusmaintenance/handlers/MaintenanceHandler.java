@@ -7,37 +7,39 @@ import java.util.List;
 public class MaintenanceHandler {
 
     private final FileManager fileManager;
+    private List<String> whitelist;
 
     public MaintenanceHandler(FileManager fileManager){
         this.fileManager = fileManager;
     }
 
+
     public boolean addPlayer(String arg){
 
-        List<String> addList = fileManager.getConfig().getStringList("config.whitelist-player");
+        whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
 
-        if (addList.contains(arg)){
+        if (whitelist.contains(arg)){
             return false;
         }
 
-        addList.add(arg);
+        whitelist.add(arg);
 
-        fileManager.getConfig().set("config.whitelist-player", addList);
+        fileManager.getConfig().set("config.whitelist-player", whitelist);
         fileManager.getConfig().save();
         return true;
     }
 
     public boolean removePlayer(String arg){
 
-        List<String> removeList = fileManager.getConfig().getStringList("config.whitelist-player");
+        whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
 
-        if (!(removeList.contains(arg))){
+        if (!(whitelist.contains(arg))){
             return false;
         }
 
-        removeList.remove(arg);
+        whitelist.remove(arg);
 
-        fileManager.getConfig().set("config.whitelist-player", removeList);
+        fileManager.getConfig().set("config.whitelist-player", whitelist);
         fileManager.getConfig().save();
         return true;
 
@@ -45,9 +47,9 @@ public class MaintenanceHandler {
 
     public boolean isWhitelist(String string){
 
-        List<String> list = fileManager.getConfig().getStringList("config.whitelist-player");
+        whitelist = fileManager.getConfig().getStringList("config.whitelist-player");
 
-        return list.contains(string);
+        return whitelist.contains(string);
     }
 
 
