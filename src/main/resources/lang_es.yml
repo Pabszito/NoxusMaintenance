@@ -22,7 +22,7 @@ lang:
   maintenance-disable: '&aMantenimiento desactivado'
 error:
   no-player: '&cEse jugador no existe'
-  no-pemsissions: 'No tienes permisos'
+  no-permission: 'No tienes permisos'
   already-enable: '&cEl mantenimiento ya está activado'
   already-disable: '&cEl mantenimiento ya está desactivado'
   already-player: '&cEste jugador ya está agregado'

@@ -23,7 +23,7 @@ lang:
   maintenance-disable: '&aMaintenance disabled'
 error:
   no-player: '&cPlayer don''t exist'
-  no-pemsissions: '&cYou don''t have permissions'
+  no-permission: '&cYou don''t have permissions'
   already-enable: '&cMaintenance already enabled'
   already-disable: '&cMaintenance already disabled'
   already-player: '&cThis player already exist'

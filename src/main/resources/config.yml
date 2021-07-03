@@ -9,7 +9,7 @@
 config:
   # Enable or disable maintenance mode.
   # You can change this option while /nxsm on/off command
-  enable: true
+  enable: false
   # Print message to kick player.
   kick-message:
     - '&8[&cNoxus Team&8]'
